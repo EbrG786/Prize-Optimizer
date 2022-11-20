@@ -62,10 +62,10 @@ app.layout = html.Div(
                                             "label": "Price",
                                             "value": "price"
                                         },
-                                        {
-                                            "label": "Quantity",
-                                            "value": "quantity"
-                                        },
+                                        # {
+                                        #     "label": "Quantity",
+                                        #     "value": "quantity"
+                                        # },
 
                                     ],
                                     value="price",
@@ -81,7 +81,7 @@ app.layout = html.Div(
                             className="padding-top-bot",
                             children=[
 
-                                html.H6("OPTIMIZATION RANGE"),
+                                html.H6("PRICE OPTIMIZATION RANGE"),
                                 html.Div(
                                     id='output-container-range-slider'),
                                 dcc.RangeSlider(
@@ -298,10 +298,10 @@ def update_output_All(var_opt, var_range, var_cost):
 
             if opt_Revenue > 0:
                 return [res.to_dict('records'), fig_PriceVsRevenue, fig_PriceVsQuantity, 
-                    f'Le revenu maximal de {opt_Revenue} est atteint en optimisant {var_opt} de {opt_Price}, coût fixe de {var_cost} et loptimisation a été effectuée pour {var_opt} entre {var_range}']
+                    f'The maximum revenue of {opt_Revenue} is achieved by optimizing {var_opt} of {opt_Price}, fixed cost of {var_cost} and optimization was carried for {var_opt} range between {var_range}']
             else:
                 return [res.to_dict('records'), fig_PriceVsRevenue, fig_PriceVsQuantity, 
-                    f'Le revenu maximal de {var_cost} et {var_opt} entre {var_range}, vous subirez une perte de revenus']
+                    f'The maximum revenue of {var_cost} et {var_opt} entre {var_range}, vous subirez une perte de revenus']
 
         else:
             res, fig_QuantityVsRevenue, fig_PriceVsQuantity, opt_Quantity,opt_Revenue  = Python.optimize_quantity.fun_optimize(
